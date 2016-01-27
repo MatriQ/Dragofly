@@ -1,3 +1,2 @@
 # Dragofly
-
-a [Sails](http://sailsjs.org) application
+a simple manager system ,build by sails
