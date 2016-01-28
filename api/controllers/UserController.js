@@ -15,7 +15,7 @@ module.exports = {
 	modify:function(){
 
 	},
-	delete:function{
+	delete:function(){
 
 	}
 };
