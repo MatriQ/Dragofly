@@ -32,11 +32,12 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': 'HomeController',
+  'GET /': 'HomeController',
 
 
-  '/login'  :'SessionController',
-  '/logout' :{controller:'session',action:'destroy'}
+  'GET /login'  :'SessionController',
+  'POST /logout' :{controller:'session',action:'destroy'},
+  'DELETE /user/:name':{controller:'user',action:'destroy'},
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *

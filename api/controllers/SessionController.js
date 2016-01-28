@@ -13,10 +13,13 @@ module.exports = {
 			return res.redirect('/');
 		}
 		else{
-			return res.view({username:''});
+			return res.view('session/index',{username:''});
 		}
 	},
 	create:function(req,res){
+		if (req.method=="GET") {
+			return res.redirect('/login');
+		}
 		var username=req.param('username'),
 			password=req.param('password');
 
