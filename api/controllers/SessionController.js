@@ -25,26 +25,27 @@ module.exports = {
 
 		console.log('session#create:'+username+','+password);
 
-		User.find({Name:username}).exec(function(err,user){
-			if (user.length>>0==0 || err) {
+		User.find({Name:username}).exec(function(err,users){
+			if (users.length>>0==0 || err) {
 				//req.flash.message('login failed...','error');
-				req.session.flash={success:0,}
-				req.flash('error',req.session.flash);
+				req.flash('error','can not find user');
 				return res.redirect('/login',{
 					username:req.body.username
 				});
 			}
-			//console.log(user);
+
+			var user=users[0];
+
 			if (password==user.pwd) {
 				req.session.auth=true;
 				req.session.User=user;
-				return res.redirect('/home');
+				console.log('login success.');
+				return res.redirect('/');
 			}
 			else{
 				//req.flash.message('login failed,password error...','error');
-				return res.redirect('/login',{
-					username:req.body.username
-				});
+				req.flash('error','user password error.');
+				return res.redirect('/login');
 			}
 		});
 	},
