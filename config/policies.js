@@ -48,4 +48,17 @@ module.exports.policies = {
 		// before letting any users feed our rabbits
 		// feed : ['isNiceToAnimals', 'hasRabbitFood']
 	// }
+
+//http://stackoverflow.com/questions/25350841/sails-js-flash-message-for-user-registration
+  /*'*':[true,'flash'],
+  'SessionController':{
+    'create':['flash'],
+  },
+  'UserController': {
+    'register': ['flash'],
+    // any future actions that want flash
+  },
+  'AnotherController': {
+    'someAction': ['flash', 'somePolicy'],
+  }*/
 };

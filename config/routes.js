@@ -32,10 +32,11 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': {
-    view: 'homepage'
-  }
+  '/': 'HomeController',
 
+
+  '/login'  :'SessionController',
+  '/logout' :{controller:'session',action:'destroy'}
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *

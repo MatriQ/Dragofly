@@ -30,15 +30,15 @@ module.exports.views = {
   *                                                                           *
   ****************************************************************************/
 
-  //engine: 'ejs',
-  engine:{
+  engine: 'ejs',
+  /*engine:{
     ext:'html',
     fn:function (pathName,locals,cb) {
       var swig = require('swig');
       swig.setDefaults({tagControls:['{?','?}']});
       return swig.renderFile(pathName,locals,cb);
     }
-  },
+  },*/
 
 
   /****************************************************************************
