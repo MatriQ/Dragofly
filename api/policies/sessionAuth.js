@@ -19,7 +19,7 @@ module.exports = function(req, res, next) {
     return next();
   }
   else{
-    res.redirect('/login');
+    return res.redirect('/login');
   }
 
   // User is not allowed
