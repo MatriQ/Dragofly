@@ -9,7 +9,12 @@
 
 module.exports = {
 	index:function(req,res){
-		return res.view({username:''});
+		if (req.session.auth) {
+			return res.redirect('/');
+		}
+		else{
+			return res.view({username:''});
+		}
 	},
 	create:function(req,res){
 		var username=req.param('username'),
@@ -33,7 +38,7 @@ module.exports = {
 			}
 
 			var user=users[0];
-			console.log(user);
+			//console.log(user);
 			if (password==user.pwd) {
 				req.session.auth=true;
 				req.session.User=user;

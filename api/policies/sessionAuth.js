@@ -8,11 +8,18 @@
  *
  */
 module.exports = function(req, res, next) {
-  console.log('sessionAuth:'+req.session.authenticated);
+  //console.log('sessionAuth:'+req.session.authenticated);
   // User is allowed, proceed to the next policy,
   // or if this is the last policy, the controller
-  if (req.session.authenticated) {
+  /*if (req.session.authenticated) {
     return next();
+  }*/
+  //console.log(req.options);
+  if (req.session.auth) {
+    return next();
+  }
+  else{
+    res.redirect('/login');
   }
 
   // User is not allowed
