@@ -9,17 +9,17 @@
 
 module.exports = {
 	index:function(req,res){
-		return res.view();
+		return res.view({username:''});
 	},
 	create:function(req,res){
 		var username=req.param('username'),
 			password=req.param('password');
 
-		if (!username || !password) {
+		if (!username ) {
 			//req.flash.message('login failed...','error');
 			req.flash('message','no  username');
 			return res.view('session/index',{
-				error:'username and password can not be empty.'
+				username:''
 			});
 		}
 
@@ -28,14 +28,12 @@ module.exports = {
 		User.find({Name:username}).exec(function(err,users){
 			if (users.length>>0==0 || err) {
 				//req.flash.message('login failed...','error');
-				req.flash('error','can not find user');
-				return res.redirect('/login',{
-					username:req.body.username
-				});
+				req.flash('message','找不到用户');
+				return res.view('session/index',{username:username});
 			}
 
 			var user=users[0];
-
+			console.log(user);
 			if (password==user.pwd) {
 				req.session.auth=true;
 				req.session.User=user;
@@ -44,13 +42,13 @@ module.exports = {
 			}
 			else{
 				//req.flash.message('login failed,password error...','error');
-				req.flash('error','user password error.');
-				return res.redirect('/login');
+				req.flash('message','密码错误');
+				return res.view('session/index',{username:username});
 			}
 		});
 	},
 	destroy:function(req,res){
 		req.session.destroy();
-		res.redirect("signin");
+		res.redirect("/login");
 	}
 };
