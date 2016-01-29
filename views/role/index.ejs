@@ -22,13 +22,14 @@
         <%= role.Desc %>
       </td>
       <td>
-        <a href="/role/update/<%=role._id%>" >修改</a>
+        <a href="/role/edit/<%=role.id%>" >修改</a>
       </td>
       <td>
-        <a href="/role/delete/<%=role._id%>" onclick="if(!confirm('删除后不可恢复,确定删除纪录吗?'))return false;">删除</a>
+        <a href="/role/delete/<%=role.id%>" onclick="if(!confirm('删除后不可恢复,确定删除纪录吗?'))return false;">删除</a>
       </td>
     </tr>
   <% }) %>
 </table>
 <br>
-<a href="/role/new">创建用户</a>
+<a href="/role/new">创建角色</a>
+<a href="/">首页</a>

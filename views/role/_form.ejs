@@ -1,0 +1,13 @@
+<label for="Name">角色名：</label>
+<input type="text" name="Name" value="<%= role.Name %>">
+<br>
+<label for="Desc">说 明：</label>
+<input type="text" name="Desc" value="<%= role.Desc %>">
+<br>
+<label for="Funcs">权 限：</label>
+<input type="text" name="Funcs" value="<%= role.Func %>">
+<br>
+<input type="submit" name="name" value="提交">
+<a href="/role">返回</a>
+
+<input type="hidden" name="_csrf" value="<%= _csrf %>" />

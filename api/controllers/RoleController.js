@@ -13,28 +13,58 @@ module.exports = {
 		});
 	},
 	new:function(req,res){
-		var id=BSON.ObjectID.createFromHexString(req.param('id'));
 		var newRole={
-			Name:req.param('name'),
-			Desc:req.param('desc'),
+			Name:'',
+			Desc:'',
 			Func:''
 		}
 		if (req.method='GET') {
 			res.locals.role=newRole;
-			res.view();
+			return res.view();
 		}
 		else if (req.method='POST') {
-			Role.update({_id:id},newRole).exec(function(err,updated){
+			newRole={
+				Name:req.param('Name'),
+				Desc:req.param('Desc'),
+				Func:''
+			};
+			console.log(newRole);
+			Role.create(newRole).then(function(ret){
+				if (ret) {
+					return res.redirect('/role');
+				}
+				else{
+					return res.ok();
+				}
+			});
+		}
+	},
+	edit:function(req,res){
+		var id=req.param('id');
+		if (req.method=='GET') {
+			Role.findOne({id:id}).then(function(role){
+				if (!role) {
+					return res.redirect('/role');
+				}
+				else{
+					res.locals.role=role;
+					return res.view();
+				}
+			});
+		}
+		else{
+			var newRole={
+				Name:req.param('Name'),
+				Desc:req.param('Desc'),
+				Funcs:req.param('Funcs')
+			};
+			Role.update(id,newRole).exec(function(err,updated){
 				if (err) {
 					req.flash('message',err);
 					return res.view();
 				}
 				return res.redirect('back');
 			});
-		}
-	},
-	update:function(req,res){
-
 		/*else{
 			Role.findOne({_id:id}).then(function(role){
 				res.locals.role=role;
@@ -43,6 +73,7 @@ module.exports = {
 				console.log(err);
 			});
 		}*/
+		}
 	},
 	delete:function(req,res){
 
