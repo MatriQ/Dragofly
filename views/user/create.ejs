@@ -1,0 +1,13 @@
+<form action="/user/create" method="post">
+
+<input  name="user" type="text" value="<%= user.Name %>" />
+<br>
+<input name="pwd" type="password" value="<%= user.pwd %>"/>
+<br>
+<input type="check" value="<%= user.isSuper %>"/>
+<br>
+<input type="submit" name="name" value="提交">
+<input type="hidden" name="_csrf" value="<%= _csrf %>" />
+</form>
+<br>
+<a href="/user/create">取消</a>

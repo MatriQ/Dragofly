@@ -9,6 +9,9 @@
     <th>
 
     </th>
+    <th>
+
+    </th>
   </tr>
   <% users.forEach(function(user){ %>
     <tr>
@@ -16,7 +19,10 @@
         <%= user.Name %>
       </td>
       <td>
-        <%= user.superUser %>
+        <%= user.isSuper %>
+      </td>
+      <td>
+        <a href="/user/update/<%=user.Name%>" >修改</a>
       </td>
       <td>
         <a href="/user/delete/<%=user.Name%>" onclick="if(!confirm('删除后不可恢复,确定删除纪录吗?'))return false;">删除</a>
@@ -24,3 +30,5 @@
     </tr>
   <% }) %>
 </table>
+<br>
+<a href="/user/create">创建用户</a>

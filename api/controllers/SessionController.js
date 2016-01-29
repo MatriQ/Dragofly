@@ -33,14 +33,13 @@ module.exports = {
 
 		console.log('session#create:'+username+','+password);
 
-		User.find({Name:username}).exec(function(err,users){
-			if (users.length>>0==0 || err) {
+		User.findOne({Name:username}).exec(function(err,user){
+			if (!user || err) {
 				//req.flash.message('login failed...','error');
 				req.flash('message','找不到用户');
 				return res.view('session/index',{username:username});
 			}
 
-			var user=users[0];
 			//console.log(user);
 			if (password==user.pwd) {
 				req.session.auth=true;
