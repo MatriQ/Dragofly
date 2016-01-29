@@ -1,5 +1,5 @@
 <form action="/user/update" method="post">
-
+<input name="id" type="hidden" value="<%= user.Name %>"/>
 <input name="user" type="text" readonly="readonly" value="<%= user.Name %>"/>
 <br>
 <input name="pwd" type="password" value="<%= user.pwd %>"/>

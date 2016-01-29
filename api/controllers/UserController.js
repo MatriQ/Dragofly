@@ -41,13 +41,14 @@ module.exports = {
 			Name:req.param('user'),
 			pwd:req.param('pwd')
 		};
-		if (req.method=='POST') {
+		console.log("method"+req.method);
+		if (req.method=='PUT') {
 			User.update({Name:reqUser.Name},reqUser).exec(function(err,updated){
 				if (err || !updated) {
 					req.flast('message',err);
 					console.log(err);
 				}
-				User.findOne({Name:reqUser.Name}).then(function(err,user){
+				User.findOne({Name:reqUser.Name}).then(function(user){
 					res.locals.user=user;
 					return res.redirect('back');
 				}).catch(function(err){
