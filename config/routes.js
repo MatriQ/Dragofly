@@ -36,7 +36,7 @@ module.exports.routes = {
 
 
   'GET /login'  :'SessionController',
-  'POST /logout' :{controller:'session',action:'destroy'},
+  'GET /logout' :{controller:'session',action:'destroy'},
   'DELETE /user/:name':{controller:'user',action:'destroy'},
   /***************************************************************************
   *                                                                          *

@@ -55,6 +55,7 @@ module.exports = {
 		});
 	},
 	destroy:function(req,res){
+		console.log('logout success');
 		req.session.destroy();
 		res.redirect("/login");
 	}

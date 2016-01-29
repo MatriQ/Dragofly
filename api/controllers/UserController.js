@@ -13,22 +13,26 @@ module.exports = {
 		});
 	},
 	create:function(req,res){
+		var user={Name:'',pwd:'',isSuper:false};
 		if (req.method=='GET') {
+			res.locals.user=user;
 			return res.view();
 		}
-		var user={
-			Name	:req.param('username'),
-			pwd		:req.param('pwd'),
-			superUser	:false
-		};
-		User.create(user).then(function(ret){
-			req.flash('message','添加成功');
-			return res.redirect('/user');
-		},function(ret){
-			req.flash('message','添加失败');
-			res.locals.hr=req.body;
-			return res.view();
-		});
+		else{
+			user={
+				Name	:req.param('user'),
+				pwd		:req.param('pwd'),
+				isSuper	:false
+			};
+			User.create(user).then(function(ret){
+				req.flash('message','添加成功');
+				return res.redirect('/user');
+			},function(ret){
+				req.flash('message','添加失败');
+				res.locals.hr=req.body;
+				return res.view();
+			});
+		}
 	},
 	update:function(req,res){
 		//res.locals.user
@@ -45,7 +49,7 @@ module.exports = {
 				}
 				User.findOne({Name:reqUser.Name}).then(function(err,user){
 					res.locals.user=user;
-					return res.view();
+					return res.redirect('back');
 				}).catch(function(err){
 					console.log(err);
 				});
@@ -55,8 +59,7 @@ module.exports = {
 			if (!username) {
 				return res.redirect('/user');
 			}
-			User.findOne({Name:username}).then(function(err,user){
-				console.log('get:'+user);
+			User.findOne({Name:username}).then(function(user){
 				res.locals.user=user;
 				return res.view();
 			}).catch(function(err){
