@@ -28,7 +28,6 @@ module.exports = {
 				Desc:req.param('Desc'),
 				Func:''
 			};
-			console.log(newRole);
 			Role.create(newRole).then(function(ret){
 				if (ret) {
 					return res.redirect('/role');
@@ -65,14 +64,6 @@ module.exports = {
 				}
 				return res.redirect('back');
 			});
-		/*else{
-			Role.findOne({_id:id}).then(function(role){
-				res.locals.role=role;
-				return res.redirect('back');
-			}).catch(function(err){
-				console.log(err);
-			});
-		}*/
 		}
 	},
 	delete:function(req,res){
