@@ -25,7 +25,7 @@ module.exports = {
 
 		if (!username ) {
 			//req.flash.message('login failed...','error');
-			req.flash('message','no  username');
+			req.flash('message',{type:'error',msg:'请输入账号'}});
 			return res.view('session/index',{
 				username:''
 			});

@@ -1,12 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html  class="bootstrap-admin-vertical-centered">
   <head>
-    <title>New Sails App</title>
-
+    <title>BD Games</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Viewport mobile tag for sensible mobile support -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
+    <!-- Custom styles -->
+    <style type="text/css">
+        .alert{
+            margin: 0 auto 20px;
+        }
+    </style>
 
+            <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+            <!--[if lt IE 9]>
+               <script type="text/javascript" src="js/html5shiv.js"></script>
+               <script type="text/javascript" src="js/respond.min.js"></script>
+            <![endif]-->
     <!--
         Stylesheets and Preprocessors
         ==============================
@@ -29,11 +40,26 @@
     -->
 
     <!--STYLES-->
+    <link rel="stylesheet" href="/styles/DT_bootstrap.css">
+    <link rel="stylesheet" href="/styles/bootstrap-admin-theme-change-size.css">
+    <link rel="stylesheet" href="/styles/bootstrap-admin-theme-small.css">
+    <link rel="stylesheet" href="/styles/bootstrap-admin-theme.css">
+    <link rel="stylesheet" href="/styles/bootstrap-error-page.css">
+    <link rel="stylesheet" href="/styles/bootstrap-small.css">
+    <link rel="stylesheet" href="/styles/bootstrap-switch-small.css">
+    <link rel="stylesheet" href="/styles/bootstrap-theme-switch.css">
+    <link rel="stylesheet" href="/styles/bootstrap-theme-switch.min.css">
+    <link rel="stylesheet" href="/styles/bootstrap-theme.css">
+    <link rel="stylesheet" href="/styles/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/styles/bootstrap.css">
+    <link rel="stylesheet" href="/styles/bootstrap.min.css">
+    <link rel="stylesheet" href="/styles/datepicker.fixes.css">
     <link rel="stylesheet" href="/styles/importer.css">
+    <link rel="stylesheet" href="/styles/uniform.default.fixes.css">
     <!--STYLES END-->
   </head>
 
-  <body>
+  <body class="bootstrap-admin-without-padding">
      <%- body %>
 
 
@@ -60,7 +86,7 @@
     -->
 
     <!--TEMPLATES-->
-    
+
     <!--TEMPLATES END-->
 
 
@@ -87,8 +113,24 @@
 
     -->
 
-    <!--SCRIPTS-->
-    <script src="/js/dependencies/sails.io.js"></script>
-    <!--SCRIPTS END-->
+     <script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+     <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+     <script type="text/javascript">
+         $(function() {
+             // Setting focus
+             $('input[name="username"]').focus();
+
+             // Setting width of the alert box
+             var alert = $('.alert');
+             var formWidth = $('.bootstrap-admin-login-form').innerWidth();
+             var alertPadding = parseInt($('.alert').css('padding'));
+
+             if (isNaN(alertPadding)) {
+                 alertPadding = parseInt($(alert).css('padding-left'));
+             }
+
+             $('.alert').width(formWidth - 2 * alertPadding);
+         });
+     </script>
   </body>
 </html>
