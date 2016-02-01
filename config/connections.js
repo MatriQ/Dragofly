@@ -61,7 +61,7 @@ module.exports.connections = {
     host: 'localhost',
     port: 27017,
     user: 'admin',
-    password: '1231',
+    password: '123',
     database: 'AdminDB'
   },
 

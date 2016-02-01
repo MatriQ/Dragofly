@@ -1,0 +1,19 @@
+<label for="Name">导航名：</label>
+<input type="text" name="name" value="<%= nav.name %>">
+<br>
+<label for="Desc">说 明：</label>
+<input type="text" name="desc" value="<%= nav.desc %>">
+<br>
+<label for="icon">图标：</label>
+<input type="text" name="icon" value="<%= nav.icon %>">
+<br>
+<label for="tag">TAG：</label>
+<input type="text" name="tag" value="<%= nav.tag %>">
+<br>
+<label for="sort">排序：</label>
+<input type="text" name="sort" value="<%= nav.sort %>">
+<br>
+<input type="submit"  value="提交">
+<a href="/navigation">返回</a>
+
+<input type="hidden" name="_csrf" value="<%= _csrf %>" />
