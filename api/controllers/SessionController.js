@@ -25,9 +25,15 @@ module.exports = {
 
 		if (!username ) {
 			//req.flash.message('login failed...','error');
-			req.flash('message',{type:'error',msg:'请输入账号'}});
+			req.flash('error','请输入账号');
 			return res.view('session/index',{
 				username:''
+			});
+		}
+		else if (!password) {
+			req.flash('error','请输入密码');
+			return res.view('session/index',{
+				username:username
 			});
 		}
 
@@ -36,7 +42,7 @@ module.exports = {
 		User.findOne({Name:username}).exec(function(err,user){
 			if (!user || err) {
 				//req.flash.message('login failed...','error');
-				req.flash('message','找不到用户');
+				req.flash('error','找不到用户');
 				return res.view('session/index',{username:username});
 			}
 
@@ -49,7 +55,7 @@ module.exports = {
 			}
 			else{
 				//req.flash.message('login failed,password error...','error');
-				req.flash('message','密码错误');
+				req.flash('error','密码错误');
 				return res.view('session/index',{username:username});
 			}
 		});
