@@ -7,6 +7,14 @@
 
 module.exports = {
 	index:function(req,res){
-		res.view();
+		res.locals.username=req.session.User.Name;
+		Navigation.find().then(function(navs){
+			res.locals.navs=navs;
+			return res.view();
+		}).catch(function(err){
+			req.flash('message',err);
+			return res.view();
+		});
+		//return res.view();
 	}
 };

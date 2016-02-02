@@ -10,6 +10,7 @@ module.exports = {
   attributes: {
     name:'STRING',
     icon:'STRING',
+    address:'STRING',
     tag:'STRING',
     desc:'STRING',
     sort:'INT'
