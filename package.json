@@ -24,7 +24,7 @@
     "sails-auth": "^2.1.3",
     "sails-mongo": "latest",
     "sails-permissions": "^2.2.0",
-    "sails-hook-validation":"latest"
+    "sails-hook-validation":"latest",
     "swig": "latest"
   },
   "scripts": {
