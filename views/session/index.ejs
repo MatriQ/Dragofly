@@ -1,28 +1,122 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+        <title>登录</title>
+
+        <meta name="description" content="登录" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <!--Basic Styles-->
+        <link href="/styles/bootstrap.min.css" rel="stylesheet" />
+        <link id="bootstrap-rtl-link" href="" rel="stylesheet" />
+        <link href="/styles/font-awesome.min.css" rel="stylesheet" />
+
+        <!--Fonts-->
+        <link href="http://fonts.useso.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300" rel="stylesheet" type="text/css">
+
+        <!--Beyond styles-->
+        <link id="beyond-link" href="/beyond.min.css" rel="stylesheet" />
+        <link href="/styles/demo.min.css" rel="stylesheet" />
+        <link href="/styles/animate.min.css" rel="stylesheet" />
+        <link id="skin-link" href="" rel="stylesheet" type="text/css" />
+
+        <!--Skin Script: Place this script in head to load scripts for skins and rtl support-->
+        
+
+  </head>
+
+  <body>
 <%= req.flash('message') %>
+<div class="login-container animated fadeInDown">
+		         <div class="loginbox bg-white">
+	       <form method="POST" action="/session/create" >
+					 	<%
+		 					var error=req.flash('error');
+		 				 if(error.length>>0>0){ %>
+		 	       <div class="alert alert-danger" >
+		 	           <a class="close" data-dismiss="alert" href="#">&times;</a>
+		 						 <%= error %>
+		 	       </div>
+		 				 <% } %>
 
-<div class="container">
-	<div class="row">
-		<div class="col-lg-12">
-			<%
-				var error=req.flash('error');
-			 if(error.length>>0>0){ %>
-       <div class="alert alert-danger" style="width:400px;">
-           <a class="close" data-dismiss="alert" href="#">&times;</a>
-					 <%= error %>
-       </div>
-			 <% } %>
-       <form method="POST" action="/session/create" class="bootstrap-admin-login-form">
-           <h1>登 录</h1>
-           <div class="form-group">
-               <input class="form-control" type="text" name="username" placeholder="用户名" value="<%= username%>">
-           </div>
-           <div class="form-group">
-               <input class="form-control" type="password" name="password" placeholder="密码">
-           </div>
+            <div class="loginbox-title">登 录</div>
 
-           <button class="btn btn-lg btn-primary center" type="submit">登 录</button>
-	 				<input type="hidden" name="_csrf" value="<%= _csrf %>" />
-       </form>
-   </div>
-	</div>
-</div>
+            <div class="loginbox-textbox">
+		                <input type="text" name="username" class="form-control" placeholder="用户名" />
+            </div>
+            <div class="loginbox-textbox">
+                <input type="password" name="password" class="form-control" placeholder="密码" />
+            </div>
+            <div class="loginbox-forgot">
+                <a href="">忘记密码?</a>
+            </div>
+            <div class="loginbox-submit">
+                <input  type="submit" class="btn btn-primary btn-block"  value="登 录">
+            </div>
+						<input type="hidden" name="_csrf" value="<%= _csrf %>" />
+
+        </div>
+			</form>
+    </div>
+
+		    <!--
+		        Client-side Templates
+		        ========================
+
+		        HTML templates are important prerequisites of modern, rich client applications.
+		        To work their magic, frameworks like Backbone, Angular, Ember, and Knockout require
+		        that you load these templates client-side.
+
+		        By default, your Gruntfile is configured to automatically load and precompile
+		        client-side JST templates in your `assets/templates` folder, then
+		        include them here automatically (between TEMPLATES and TEMPLATES END).
+
+		        To customize this behavior to fit your needs, just edit `tasks/pipeline.js`.
+		        For example, here are a few things you could do:
+
+		            + Import templates from other directories
+		            + Use a different template engine (handlebars, jade, dust, etc.)
+		            + Internationalize your client-side templates using a server-side
+		              stringfile before they're served.
+		    -->
+
+		    <!--TEMPLATES-->
+    		
+    		<!--TEMPLATES END-->
+
+		    <!--Basic Scripts-->
+		    <script src="/js/jquery-2.0.3.min.js"></script>
+		    <script src="/js/bootstrap.min.js"></script>
+
+		    <!--Beyond Scripts-->
+		    <script src="/js/beyond.min.js"></script>
+
+		    <!--
+
+		      Client-side Javascript
+		      ========================
+
+		      You can always bring in JS files manually with `script` tags, or asynchronously
+		      on the client using a solution like AMD (RequireJS).  Or, if you like, you can
+		      take advantage of Sails' conventional asset pipeline (boilerplate Gruntfile).
+
+		      By default, files in your `assets/js` folder are included here
+		      automatically (between SCRIPTS and SCRIPTS END).  Both JavaScript (.js) and
+		      CoffeeScript (.coffee) are supported. In production, your scripts will be minified
+		      and concatenated into a single file.
+
+		      To customize any part of the built-in behavior, just edit `tasks/pipeline.js`.
+		      For example, here are a few things you could do:
+
+		          + Change the order of your scripts
+		          + Import scripts from other directories
+		          + Use a different preprocessor, like TypeScript
+
+		    -->
+
+
+
+		  </body>
+		</html>
