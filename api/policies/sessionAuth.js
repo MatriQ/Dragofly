@@ -16,7 +16,16 @@ module.exports = function(req, res, next) {
   }*/
   //console.log(req.options);
   if (req.session.auth) {
-    return next();
+    res.locals.username=req.session.User.Name;
+    Navigation.find().then(function(navs){
+			res.locals.navs=navs;
+			//console.log(app.locals.navs);
+			return next();
+		}).catch(function(err){
+			//req.flash('message',err);
+			return next();
+		});
+    //return next();
   }
   else{
     return res.redirect('/login');
@@ -24,5 +33,5 @@ module.exports = function(req, res, next) {
 
   // User is not allowed
   // (default res.forbidden() behavior can be overridden in `config/403.js`)
-  return res.forbidden('You are not permitted to perform this action.');
+  //return res.forbidden('You are not permitted to perform this action.');
 };

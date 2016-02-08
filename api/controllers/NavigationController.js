@@ -9,6 +9,7 @@ module.exports = {
 		index:function(req,res){
 			Navigation.find().then(function(navs){
 				res.locals.navs=navs;
+				res.locals.title="导航管理";
 				return res.view();
 			}).catch(function(err){
 				req.flash('message',err);

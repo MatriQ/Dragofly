@@ -1,0 +1,23 @@
+<!--System-->
+  <% navs.forEach(function(nav){ %>
+    <li>
+      <% if(nav.children.length>>0>0 ){ %>
+        <a href="<%= nav.address %>" class="menu-dropdown" >
+              <i class="menu-icon glyphicon glyphicon-cog"></i>
+              <span class="menu-text"> <%= nav.name %></span>
+              <i class="menu-expand"></i>
+         </a>
+         <ul class="submenu">
+           <% nav.children.forEach(function(func){%>
+           <li>
+             <a href="<%= func.address %>">
+                <span class="menu-text"> <%= func.name %></span>
+              </a>
+            </li>
+           <%}) %>
+         </ul>
+       <% } else { %>
+         <a href="<%= nav.address %>" />
+       <% } %>
+    </li>
+  <%}) %>
