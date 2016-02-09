@@ -1,13 +1,42 @@
-<label for="Name">角色名：</label>
-<input type="text" name="Name" value="<%= role.Name %>">
-<br>
-<label for="Desc">说 明：</label>
-<input type="text" name="Desc" value="<%= role.Desc %>">
-<br>
-<label for="Funcs">权 限：</label>
-<input type="text" name="Funcs" value="<%= role.Func %>">
-<br>
-<input type="submit" name="name" value="提交">
-<a href="/role">返回</a>
+<div class="col-lg-12 col-sm-12 col-xs-12">
+  <div class="row">
+    <div class="widget">
+      <div class="widget-header bordered-bottom">
+        <span class="widget-caption">角色</span>
+      </div>
+      <div class="widget-body">
+        <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+        <div>
+          <div class="form-group">
+            <label for="account">角色名</label>
+            <input name="Name" type="text" class="form-control" id="Name" placeholder="请输入角色名" value="<%= role.Name||'' %>">
+          </div>
+          <div class="form-group">
+            <label for="Desc">说明</label>
+            <input name="Desc"  type="text" class="form-control" placeholder="请输入描述信息" value="<%= role.Desc||'' %>">
+          </div>
+          <div class="form-group">
+            <label for="Funcs">权限</label>
+            <input name="Funcs"  type="text" class="form-control"  placeholder="" value="<%= role.Funcs||'' %>">
+          </div>
+          <button type="submit" class="btn btn-blue">提交</button>
+          <a href="/role" class="btn btn-default">返回</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
 
-<input type="hidden" name="_csrf" value="<%= _csrf %>" />
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="myLargeModalLabel">Large modal</h4>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>

@@ -75,7 +75,7 @@ module.exports = {
 		}
 	},
 	delete:function(req,res,next){
-		console.log(req);
+		//console.log(req);
 		var id=req.param('id');
 
 		User.findOne({id:id}).then(function(user){

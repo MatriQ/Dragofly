@@ -18,11 +18,11 @@ module.exports = {
 			Desc:'',
 			Func:''
 		}
-		if (req.method='GET') {
+		if (req.method=='GET') {
 			res.locals.role=newRole;
 			return res.view();
 		}
-		else if (req.method='POST') {
+		else if (req.method=='POST') {
 			newRole={
 				Name:req.param('Name'),
 				Desc:req.param('Desc'),
@@ -51,15 +51,16 @@ module.exports = {
 				}
 			});
 		}
-		else{
+		else if (req.method=='POST'){
 			var newRole={
 				Name:req.param('Name'),
 				Desc:req.param('Desc'),
 				Funcs:req.param('Funcs')
 			};
-			Role.update(id,newRole).exec(function(err,updated){
+			Role.update({id:id},newRole).exec(function(err,role){
 				if (err) {
 					req.flash('message',err);
+					console.log(err);
 					return res.view();
 				}
 				return res.redirect('back');
@@ -67,6 +68,32 @@ module.exports = {
 		}
 	},
 	delete:function(req,res){
+		var id=req.param('id');
 
+		Role.findOne({id:id}).then(function(role){
+			if (!role) {
+				return res.redirect('back');
+			}
+			else if (role.Name==='admin') {
+				req.flash('message','不能删除超级管理员');
+				return res.redirect('back');
+			}
+			else{
+
+					User.destroy({id:id}).then(function(data){
+						if (data) {
+							req.flash('message',"删除成功");
+						}
+						else{
+							req.flash('message',"删除失败");
+						}
+						console.log('delete user:'+data);
+						return res.redirect('back');
+					});
+			}
+		}).catch(function(err){
+			console.log('delete user failed：'+err);
+			return next(err);
+		});
 	}
 };
