@@ -335,7 +335,7 @@
                                </a>
                                <!--Login Area Dropdown-->
                                <ul class="pull-right dropdown-menu dropdown-arrow dropdown-login-area">
-                                   <li class="username"><a><%= currUser.Name %></a></li>
+                                   <li class="username"><a><%= currUser.Name || '' %></a></li>
                                    <li class="email"><a><%= currUser.mail || '' %></a></li>
                                    <!--Avatar Area-->
                                    <li>

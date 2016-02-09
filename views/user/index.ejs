@@ -51,14 +51,10 @@
                 <%}%>
               </td>
               <td>
-              <% if(user.depart && user.depart.name){ %>
-                <%= user.depart.name %>
-              <%}%>
+                <%= user.depart ||{}.name || '' %>
               </td>
               <td>
-                <% if(user.lastlogintime){ %>
-                  <%= user.lastlogintime %>
-                <%}%>
+                  <%= user.lastlogintime || '' %>
               </td>
               <td>
               <a class="btn btn-info btn-xs edit" href="/user/edit/<%=user.id%>" >修改</a>
