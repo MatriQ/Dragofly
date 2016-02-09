@@ -10,9 +10,16 @@ module.exports = {
   attributes: {
     name:'STRING',
     icon:'STRING',
-    address:'STRING',
+    address:{
+      type:'string',
+      defaultsTo:'#'
+    },
     tag:'STRING',
     desc:'STRING',
-    sort:'INT'
+    sort:
+    {
+      type:'integer',
+      defaultsTo:0
+    }
   }
 };

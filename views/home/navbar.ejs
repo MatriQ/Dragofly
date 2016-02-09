@@ -1,7 +1,7 @@
 <!--System-->
   <% navs.forEach(function(nav){ %>
     <li>
-      <% if(nav.children.length>>0>0 ){ %>
+      <% if(nav.children && nav.children.length>>0>0 ){ %>
         <a href="<%= nav.address %>" class="menu-dropdown" >
               <i class="menu-icon glyphicon glyphicon-cog"></i>
               <span class="menu-text"> <%= nav.name %></span>
@@ -17,7 +17,12 @@
            <%}) %>
          </ul>
        <% } else { %>
-         <a href="<%= nav.address %>" />
+           <a href="<%= nav.address %>">
+                            <i class="menu-icon fa fa-calendar"></i>
+                            <span class="menu-text">
+                                <%= nav.name %>
+                            </span>
+                        </a>
        <% } %>
     </li>
   <%}) %>

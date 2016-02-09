@@ -8,7 +8,7 @@
 module.exports = {
 		index:function(req,res){
 			Navigation.find().then(function(navs){
-				res.locals.navs=navs;
+				res.locals.navlist=navs;
 				res.locals.title="导航管理";
 				return res.view();
 			}).catch(function(err){
@@ -26,6 +26,7 @@ module.exports = {
 			};
 			if (req.method=='GET') {
 				res.locals.nav=newNav;
+				res.locals.title="创建导航";
 				return res.view();
 			}
 			else if (req.method=='POST') {
@@ -47,6 +48,7 @@ module.exports = {
 		},
 		edit:function(req,res){
 			var id=req.param('id');
+			res.locals.title="修改导航"
 			Navigation.findOne({id:id}).then(function(nav){
 				res.locals.nav=nav;
 				return res.view();

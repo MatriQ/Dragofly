@@ -33,38 +33,30 @@
             + Use a different or additional preprocessor, like SASS, SCSS or Stylus
     -->
 
-    <!--STYLES-->
-    <link rel="stylesheet" href="/styles/animate.min.css">
-    <link rel="stylesheet" href="/styles/bootstrap.min.css">
-    <link rel="stylesheet" href="/styles/dataTables.bootstrap.css">
-    <link rel="stylesheet" href="/styles/demo.min.css">
-    <link rel="stylesheet" href="/styles/font-awesome.min.css">
-    <link rel="stylesheet" href="/styles/importer.css">
-    <link rel="stylesheet" href="/styles/skins/azure.min.css">
-    <link rel="stylesheet" href="/styles/skins/black.min.css">
-    <link rel="stylesheet" href="/styles/skins/blue.min.css">
-    <link rel="stylesheet" href="/styles/skins/darkblue.min.css">
-    <link rel="stylesheet" href="/styles/skins/darkred.min.css">
-    <link rel="stylesheet" href="/styles/skins/deepblue.min.css">
-    <link rel="stylesheet" href="/styles/skins/gray.min.css">
-    <link rel="stylesheet" href="/styles/skins/green.min.css">
-    <link rel="stylesheet" href="/styles/skins/orange.min.css">
-    <link rel="stylesheet" href="/styles/skins/pink.min.css">
-    <link rel="stylesheet" href="/styles/skins/purple.min.css">
-    <link rel="stylesheet" href="/styles/skins/teal.min.css">
-    <link rel="stylesheet" href="/styles/typicons.min.css">
-    <link rel="stylesheet" href="/styles/uniform.default.fixes.css">
-    <link rel="stylesheet" href="/styles/uniform.default.min.css">
-    <link rel="stylesheet" href="/styles/weather-icons.min.css">
-    <!--STYLES END-->
-    <link id="beyond-link" href="/beyond.min.css" rel="stylesheet" type="text/css" />
-
-
+    <!--Basic Styles-->
+    <link href="/styles/bootstrap.min.css" rel="stylesheet" />
     <link id="bootstrap-rtl-link" href="" rel="stylesheet" />
+    <link href="/styles/font-awesome.min.css" rel="stylesheet" />
+    <link href="/styles/weather-icons.min.css" rel="stylesheet" />
+
+    <!--Fonts-->
+    <link href="http://fonts.useso.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300" rel="stylesheet" type="text/css">
+
+
+    <!--Beyond styles-->
+    <link id="beyond-link" href="/beyond.min.css" rel="stylesheet" type="text/css" />
+    <link href="/styles/demo.min.css" rel="stylesheet" />
+    <link href="/styles/typicons.min.css" rel="stylesheet" />
+    <link href="/styles/animate.min.css" rel="stylesheet" />
+    <link href="/styles/custom.css" rel="stylesheet" />
     <link id="skin-link" href="" rel="stylesheet" type="text/css" />
 
+    <script src="/js/jquery-2.0.3.min.js" charset="utf-8"></script>
     <script src="/js/skins.min.js"></script>
 
+
+    <!--Page Related styles-->
+    <link href="/styles/dataTables.bootstrap.css" rel="stylesheet" />
   </head>
 
   <body>
@@ -343,19 +335,19 @@
                                </a>
                                <!--Login Area Dropdown-->
                                <ul class="pull-right dropdown-menu dropdown-arrow dropdown-login-area">
-                                   <li class="username"><a>David Stevenson</a></li>
+                                   <li class="username"><a><%= username %></a></li>
                                    <li class="email"><a>David.Stevenson@live.com</a></li>
                                    <!--Avatar Area-->
                                    <li>
                                        <div class="avatar-area">
                                            <img src="/images/avatars/adam-jansen.jpg" class="avatar">
-                                           <span class="caption">Change Photo</span>
+                                           <span class="caption">修改头像</span>
                                        </div>
                                    </li>
                                    <!--Avatar Area-->
                                    <li class="edit">
-                                       <a href="profile.html" class="pull-left">Profile</a>
-                                       <a href="#" class="pull-right">Setting</a>
+                                       <a href="/profile" class="pull-left">个人中心</a>
+                                       <a href="#" class="pull-right">设置</a>
                                    </li>
                                    <!--Theme Selector Area-->
                                    <li class="theme-area">
@@ -453,9 +445,9 @@
                     <ul class="breadcrumb">
                         <li>
                             <i class="fa fa-home"></i>
-                            <a href="#">Home</a>
+                            <a href="/">Home</a>
                         </li>
-                        <li class="active">Dashboard</li>
+                        <li class="active">管理首页</li>
                     </ul>
                 </div>
                 <!-- /Page Breadcrumb -->
@@ -515,21 +507,29 @@
               stringfile before they're served.
     -->
 
-    <!--TEMPLATES-->
-    
-    <!--TEMPLATES END-->
-
     <!--Basic Scripts-->
     <script src="/js/jquery-2.0.3.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
 
-    <!--Beyond Scripts-->
     <script src="/js/beyond.min.js"></script>
+
+    <script src="/js/bootbox/bootbox.js"></script>
     <script type="text/javascript">
-      $().ready(function(){
-        var title=$("#title");
-        //title.html('<%- title %>')
-      });
+      function funDel(id,func) {
+        bootbox.confirm("删除后不可恢复,确定删除纪录吗?", func);
+      }
+    </script>
+
+    <!--Page Related Scripts-->
+    <script src="/js/datatable/jquery.dataTables.min.js"></script>
+    <script src="/js/datatable/dataTables.tableTools.min.js"></script>
+    <script src="/js/datatable/dataTables.bootstrap.min.js"></script>
+    <!--<script src="/js/datatable/datatables-init.js"></script>-->
+    <script>
+        // InitiateSimpleDataTable.init();
+        // InitiateEditableDataTable.init();
+        // InitiateExpandableDataTable.init();
+        // InitiateSearchableDataTable.init();
     </script>
     <!--
 

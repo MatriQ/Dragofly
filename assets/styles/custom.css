@@ -1,0 +1,22 @@
+.select-glyphicons
+{
+  margin-left: 0;
+  margin-right: 0;
+  overflow: hidden;
+}
+
+.select-glyphicons li
+{
+  float: left;
+  padding: 4px;
+  border: 1px solid #fff;
+  text-align: center;
+  font-size: 12px;
+  background-color: #f9f9f9;
+}
+
+.select-glyphicons-list
+{
+  padding-left: 0;
+  list-style: none;
+}

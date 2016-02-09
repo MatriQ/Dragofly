@@ -1,19 +1,263 @@
-<label for="Name">导航名：</label>
-<input type="text" name="name" value="<%= nav.name %>">
-<br>
-<label for="Desc">说 明：</label>
-<input type="text" name="desc" value="<%= nav.desc %>">
-<br>
-<label for="icon">图标：</label>
-<input type="text" name="icon" value="<%= nav.icon %>">
-<br>
-<label for="tag">TAG：</label>
-<input type="text" name="tag" value="<%= nav.tag %>">
-<br>
-<label for="sort">排序：</label>
-<input type="text" name="sort" value="<%= nav.sort %>">
-<br>
-<input type="submit"  value="提交">
-<a href="/navigation">返回</a>
+<div class="col-lg-12 col-sm-12 col-xs-12">
+  <div class="row">
+    <div class="widget">
+      <div class="widget-header bordered-bottom">
+        <span class="widget-caption">导航</span>
+      </div>
+      <div class="widget-body">
+        <div>
+          <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+          <div class="form-group">
+            <label for="name">导航名称</label>
+            <input name="name" type="text" class="form-control" id="name" placeholder="导航名称" value="<%= nav.name %>">
+          </div>
+          <div class="form-group">
+            <label for="desc">说明</label>
+            <input name="desc"  type="text" class="form-control" id="desc" placeholder="说明" value="<%= nav.desc %>">
+          </div>
+          <div class="form-group">
+            <label for="icon">图标</label>
+          <div class="input-group">
+            <div class="input-group-btn">
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">图标
+                <span class="caret"></span>
+              </button>
+              <div class="dropdown-menu well select-glyphicons" >
+                <ul class="select-glyphicons-list">
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-asterisk" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-plus" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-euro" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-minus" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-cloud" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-envelope" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-pencil" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-glass" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-music" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-search" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-heart" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-star" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-star-empty" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-user" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-film" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-th-large" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-th" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-th-list" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-ok" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-remove" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-zoom-in" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-zoom-out" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-off" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-signal" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-cog" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-trash" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-home" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-file" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-time" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-road" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-download-alt" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-download" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-upload" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-inbox" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-play-circle" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-repeat" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-refresh" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-list-alt" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-lock" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-flag" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-headphones" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-volume-off" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-volume-down" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-volume-up" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-qrcode" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-barcode" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-tag" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-tags" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-book" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-bookmark" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-print" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-camera" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-font" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-bold" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-italic" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-text-height" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-text-width" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-align-left" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-align-center" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-align-right" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-align-justify" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-list" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-indent-left" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-indent-right" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-facetime-video" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-picture" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-map-marker" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-adjust" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-tint" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-edit" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-share" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-check" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-move" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-step-backward" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-fast-backward" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-backward" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-play" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-pause" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-stop" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-forward" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-fast-forward" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-step-forward" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-eject" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-chevron-left" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-chevron-right" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-plus-sign" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-minus-sign" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-remove-sign" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-ok-sign" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-question-sign" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-info-sign" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-screenshot" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-remove-circle" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-ok-circle" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-ban-circle" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-arrow-left" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-arrow-right" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-arrow-up" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-arrow-down" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-share-alt" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-resize-full" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-resize-small" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-exclamation-sign" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-gift" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-leaf" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-fire" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-eye-open" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-eye-close" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-warning-sign" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-plane" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-calendar" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-random" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-comment" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-magnet" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-chevron-up" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-chevron-down" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-retweet" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-shopping-cart" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-folder-close" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-folder-open" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-resize-vertical" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-resize-horizontal" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-hdd" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-bullhorn" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-bell" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-certificate" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-thumbs-up" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-thumbs-down" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-hand-right" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-hand-left" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-hand-up" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-hand-down" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-circle-arrow-right" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-circle-arrow-left" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-circle-arrow-up" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-circle-arrow-down" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-globe" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-wrench" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-tasks" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-filter" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-briefcase" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-fullscreen" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-dashboard" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-paperclip" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-heart-empty" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-link" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-phone" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-pushpin" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-usd" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-gbp" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-sort" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-sort-by-alphabet" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-sort-by-alphabet-alt" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-sort-by-order" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-sort-by-order-alt" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-sort-by-attributes" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-sort-by-attributes-alt" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-unchecked" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-expand" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-collapse-down" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-collapse-up" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-log-in" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-flash" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-log-out" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-new-window" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-record" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-save" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-open" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-saved" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-import" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-export" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-send" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-floppy-disk" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-floppy-saved" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-floppy-remove" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-floppy-save" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-floppy-open" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-credit-card" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-transfer" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-cutlery" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-header" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-compressed" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-earphone" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-phone-alt" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-tower" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-stats" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-sd-video" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-hd-video" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-subtitles" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-sound-stereo" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-sound-dolby" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-sound-5-1" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-sound-6-1" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-sound-7-1" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-copyright-mark" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-registration-mark" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-cloud-download" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-cloud-upload" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-tree-conifer" /></a></li>
+                <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-tree-deciduous" /></a></li>
 
-<input type="hidden" name="_csrf" value="<%= _csrf %>" />
+                </ul>
+              </div>
+            </div><!-- /btn-group -->
+              <input name="icon" type="text" readonly="readonly" class="form-control hidden" >
+          </div><!-- /input-group -->
+        </div>
+          <div class="form-group">
+            <label for="tag">TAG</label>
+            <input name="tag" type="text" class="form-control" id="tag" placeholder="TAG" value="<%= nav.tag %>">
+          </div>
+          <div class="form-group hidden">
+            <label for="sort">排序</label>
+            <input name="sort" type="text" class="form-control" id="sort" value="0" value="<%= nav.sort %>">
+          </div>
+          <button type="submit" class="btn btn-blue">提交</button>
+          <a href="/navigation" class="btn">返回</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="myLargeModalLabel">Large modal</h4>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
