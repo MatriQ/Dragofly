@@ -8,8 +8,17 @@
 module.exports = {
 
   attributes: {
+    account:'STRING',
     Name:'STRING',
+    header:'string',
+    mail:'string',
     pwd:'STRING',
+    lastlogintime:'time',
+    isSuper:{
+      type:'boolean',
+      defaultsTo:false
+    },
+    depart:'STRING',
     role:{
       model:'role'
     }

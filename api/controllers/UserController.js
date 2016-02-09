@@ -12,7 +12,7 @@ module.exports = {
 			return res.view({users:users});
 		});
 	},
-	create:function(req,res){
+	new:function(req,res){
 		var user={Name:'',pwd:'',isSuper:false};
 		if (req.method=='GET') {
 			res.locals.user=user;
@@ -34,7 +34,7 @@ module.exports = {
 			});
 		}
 	},
-	update:function(req,res){
+	edit:function(req,res){
 		//res.locals.user
 		var username=req.param('id');
 		var reqUser={

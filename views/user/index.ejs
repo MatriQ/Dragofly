@@ -1,35 +1,91 @@
-<table>
-  <tr>
-    <th>
-      帐号
-    </th>
-    <th>
-      超级用户
-    </th>
-    <th>
 
-    </th>
-    <th>
-
-    </th>
-  </tr>
-  <% users.forEach(function(user){ %>
-    <tr>
-      <td>
-        <%= user.Name %>
-      </td>
-      <td>
-        <%= user.isSuper %>
-      </td>
-      <td>
-        <a href="/user/update/<%=user.Name%>" >修改</a>
-      </td>
-      <td>
-        <a href="/user/delete/<%=user.Name%>" onclick="if(!confirm('删除后不可恢复,确定删除纪录吗?'))return false;">删除</a>
-      </td>
-    </tr>
-  <% }) %>
-</table>
-<br>
-<a href="/user/create">创建用户</a>
-<a href="/">首页</a>
+<div class="row">
+  <div class="col-xs-12 col-md-12">
+    <div class="widget">
+      <div class="widget-header ">
+        <span class="widget-caption">用户列表</span>
+        <div class="widget-buttons">
+          <a href="#" data-toggle="maximize">
+            <i class="fa fa-expand"></i>
+          </a>
+          <a href="#" data-toggle="collapse">
+            <i class="fa fa-minus"></i>
+          </a>
+          <a href="#" data-toggle="dispose">
+            <i class="fa fa-times"></i>
+          </a>
+        </div>
+      </div>
+      <div class="widget-body">
+        <div class="table-toolbar">
+          <a  href="user/new" class="btn btn-default">创建用户</a>
+        </div>
+        <div role="grid" id="editabledatatable_wrapper" class="dataTables_wrapper form-inline no-footer">
+          <table class="table table-striped table-hover table-bordered dataTable no-footer" id="editabledatatable" aria-describedby="editabledatatable_info">
+            <thead>
+            <tr role="row">
+              <th rowspan="1" colspan="1" style="min-width: 40px;"></th>
+              <th rowspan="1" colspan="1" style="min-width: 80px;">用户名</th>
+              <th rowspan="1" colspan="1" style="min-width: 80px;">帐号</th>
+              <th rowspan="1" colspan="1" style="min-width: 98px;">邮箱</th>
+              <th rowspan="1" colspan="1" style="min-width: 80px;">部门</th>
+              <th rowspan="1" colspan="1" style="min-width: 70px;">上次登录</th>
+              <th rowspan="1" colspan="1" style="min-width: 70px;"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <% users.forEach(function(user){ %>
+            <tr>
+              <td>
+                <i class="fa row-details fa-plus-square-o"></i>
+              </td>
+              <td>
+              <%= user.Name %>
+              </td>
+              <td>
+              <%= user.account %>
+              </td>
+              <td>
+                <% if(user.mail){ %>
+                  <%= user.mail %>
+                <%}%>
+              </td>
+              <td>
+              <% if(user.depart && user.depart.name){ %>
+                <%= user.depart.name %>
+              <%}%>
+              </td>
+              <td>
+                <% if(user.lastlogintime){ %>
+                  <%= user.lastlogintime %>
+                <%}%>
+              </td>
+              <td>
+              <a class="btn btn-info btn-xs edit" href="/user/edit/<%=user.id%>" >修改</a>
+              <a class="btn btn-danger btn-xs delete" href="" <% if(user.isSuper){ %>disabled="disabled"<%}%> onclick="funDel('<%=user.id%>');">删除</a>
+              </td>
+            </tr>
+            <% }) %>
+            </tbody>
+          </table>
+          <div class="row DTTTFooter hidden">
+            <div class="col-sm-6">
+              <div class="dataTables_info" id="editabledatatable_info" role="alert" aria-live="polite" aria-relevant="all">Showing 1 to 5 of 6 entries
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="dataTables_paginate paging_bootstrap" id="editabledatatable_paginate">
+                <ul class="pagination">
+                  <li class="prev disabled"><a href="#">Prev</a></li>
+                  <li class="active"><a href="#">1</a></li>
+                  <li><a href="#">2</a></li>
+                  <li class="next"><a href="#">Next</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
