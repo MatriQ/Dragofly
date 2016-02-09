@@ -1,13 +1,5 @@
 <form action="/user/edit" method="post">
-<input name="id" type="hidden" value="<%= user.Name %>"/>
-<input name="user" type="text" readonly="readonly" value="<%= user.Name %>"/>
-<br>
-<input name="pwd" type="password" value="<%= user.pwd %>"/>
-<br>
-<input type="checkbox" checked="<%= user.isSuper %>" disabled="disabled">超级用户</input>
-<br>
-<input type="submit" value="提交">
-<input type="hidden" name="_csrf" value="<%= _csrf %>" />
+  <input type="hidden" name="id" value="<%=  user.id ||'0' %>">
+  <% include _form.ejs %>
+
 </form>
-<br>
-<a href="/user">取消</a>

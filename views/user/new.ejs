@@ -1,12 +1,4 @@
 <form action="/user/new" method="post">
+  <% include _form.ejs %>
 
-<input  name="user" type="text" value="<%= user.Name %>" />
-<br>
-<input name="pwd" type="password" value="<%= user.pwd %>"/>
-<br>
-<br>
-<input type="submit"  value="提交">
-<input type="hidden" name="_csrf" value="<%= _csrf %>" />
 </form>
-<br>
-<a href="/user">取消</a>

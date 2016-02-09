@@ -9,30 +9,35 @@
           <input type="hidden" name="_csrf" value="<%= _csrf %>" />
           <div class="form-group">
             <label for="header">头像</label>
-            <input name="header" type="text" class="form-control" id="tag" placeholder="TAG" value="<%= nav.tag %>">
+            <input name="header" type="text" class="form-control" id="header" placeholder="" value="<%= user.header||'' %>">
           </div>
           <div class="form-group">
-            <label for="name">帐号</label>
-            <input name="name" type="text" class="form-control" id="name" placeholder="导航名称" value="<%= nav.name %>">
+            <label for="account">帐号</label>
+            <span class="input-icon">
+              <input name="account" type="text" class="form-control" id="account" placeholder="请输入帐号" value="<%= user.account||'' %>">
+              <li class="glyphicon glyphicon-credit-card circular"></li>
+            </span>
           </div>
           <div class="form-group">
-            <label for="desc">用户名</label>
-            <input name="desc"  type="text" class="form-control" id="desc" placeholder="说明" value="<%= nav.desc %>">
+            <label for="Name">用户名</label>
+            <span class="input-icon">
+              <input name="Name"  type="text" class="form-control" id="Name" placeholder="请输入用户名" value="<%= user.Name||'' %>">
+              <li class="glyphicon glyphicon-user circular"></li>
+            </span>
           </div>
           <div class="form-group">
-            <label for="tag">部门</label>
-            <input name="tag" type="text" class="form-control" id="tag" placeholder="TAG" value="<%= nav.tag %>">
+            <label for="mail">邮箱</label>
+            <span class="input-icon">
+              <input name="mail"  type="text" class="form-control mail" id="mail" placeholder="请输入邮箱" value="<%= user.mail||'' %>">
+              <i class="fa fa-envelope-o circular"></i>
+            </span>
           </div>
           <div class="form-group">
-            <label for="desc">邮箱</label>
-            <input name="desc"  type="text" class="form-control" id="desc" placeholder="说明" value="<%= nav.desc %>">
-          </div>
-          <div class="form-group">
-            <label for="tag">最后登录</label>
-            <input name="tag" type="text" class="form-control" id="tag" placeholder="TAG" value="<%= nav.tag %>">
+            <label for="depart">部门</label>
+            <input name="depart" type="text" class="form-control" id="depart" placeholder="请输入部门" value="<%= user.depart||{}.name||'' %>">
           </div>
           <button type="submit" class="btn btn-blue">提交</button>
-          <a href="/navigation" class="btn">返回</a>
+          <a href="/user" class="btn">返回</a>
         </div>
       </div>
     </div>

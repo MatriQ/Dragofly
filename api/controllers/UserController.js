@@ -13,14 +13,16 @@ module.exports = {
 		});
 	},
 	new:function(req,res){
-		var user={Name:'',pwd:'',isSuper:false};
+		var user={account:'',pwd:'',isSuper:false};
 		if (req.method=='GET') {
 			res.locals.user=user;
 			return res.view();
 		}
 		else{
 			user={
-				Name	:req.param('user'),
+				account	:req.param('account'),
+				Name	:req.param('Name'),
+				mail	:req.param('mail'),
 				pwd		:req.param('pwd'),
 				isSuper	:false
 			};
@@ -36,31 +38,35 @@ module.exports = {
 	},
 	edit:function(req,res){
 		//res.locals.user
-		var username=req.param('id');
+		var id=req.param('id');
 		var reqUser={
-			Name:req.param('user'),
+			id:id,
+			account:req.param('account'),
+			Name	:req.param('Name'),
+			mail	:req.param('mail'),
 			pwd:req.param('pwd')
 		};
-		console.log("method"+req.method);
-		if (req.method=='PUT') {
-			User.update({Name:reqUser.Name},reqUser).exec(function(err,updated){
-				if (err || !updated) {
+		if (req.method=='POST') {
+			User.update({id:id},reqUser).exec(function(err,user){
+				if (err || !user) {
 					req.flast('message',err);
 					console.log(err);
 				}
-				User.findOne({Name:reqUser.Name}).then(function(user){
+				res.locals.user=user;
+				//console.log(user);
+				return res.redirect('back');
+				/*User.findOne({id:id}).then(function(user){
 					res.locals.user=user;
-					return res.redirect('back');
-				}).catch(function(err){
-					console.log(err);
-				});
-			});
+					console.log(user);
+					return res.redirect('back');*/
+				}
+			);
 		}
 		else{
-			if (!username) {
+			if (!id) {
 				return res.redirect('/user');
 			}
-			User.findOne({Name:username}).then(function(user){
+			User.findOne({id:id}).then(function(user){
 				res.locals.user=user;
 				return res.view();
 			}).catch(function(err){
@@ -70,19 +76,19 @@ module.exports = {
 	},
 	delete:function(req,res,next){
 		console.log(req);
-		var username=req.param('id');
+		var id=req.param('id');
 
-		User.find({Name:username}).then(function(users){
-			if (users.length>>0==0) {
+		User.findOne({id:id}).then(function(user){
+			if (!user) {
 				return res.redirect('back');
 			}
-			else if (users[0].isSuper===true) {
+			else if (user.isSuper===true) {
 				req.flash('message','不能删除超级管理员');
 				return res.redirect('back');
 			}
 			else{
 
-					User.destroy({Name:username}).then(function(data){
+					User.destroy({id:id}).then(function(data){
 						if (data) {
 							req.flash('message',"删除成功");
 						}
