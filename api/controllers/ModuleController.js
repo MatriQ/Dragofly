@@ -1,15 +1,15 @@
 /**
- * NavigationController
+ * ModuleController
  *
- * @description :: Server-side logic for managing navigations
+ * @description :: Server-side logic for managing Modules
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
 module.exports = {
 		index:function(req,res){
-			Navigation.find().then(function(navs){
+			Module.find().sort({sort:-1}).then(function(navs){
 				res.locals.navlist=navs;
-				res.locals.title="导航管理";
+				res.locals.title="功能管理";
 				return res.view();
 			}).catch(function(err){
 				req.flash('message',err);
@@ -26,7 +26,7 @@ module.exports = {
 			};
 			if (req.method=='GET') {
 				res.locals.nav=newNav;
-				res.locals.title="创建导航";
+				res.locals.title="创建功能";
 				return res.view();
 			}
 			else if (req.method=='POST') {
@@ -37,7 +37,7 @@ module.exports = {
 			    desc:req.param('desc'),
 			    sort:parseInt(req.param('sort'))
 				};
-				Navigation.create(newNav).then(function(ret){
+				Module.create(newNav).then(function(ret){
 					return res.redirect('back');
 				}).catch(function(err){
 					console.log(err);
@@ -48,8 +48,8 @@ module.exports = {
 		},
 		edit:function(req,res){
 			var id=req.param('id');
-			res.locals.title="修改导航"
-			Navigation.findOne({id:id}).then(function(nav){
+			res.locals.title="修改功能"
+			Module.findOne({id:id}).then(function(nav){
 				res.locals.nav=nav;
 				return res.view();
 			}).catch(function(err){
