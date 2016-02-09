@@ -14,37 +14,33 @@ module.exports = {
 		}
 		else{
 			//return res.view('session/index',{username:''});
-			return res.render("session/index",{username:''});
+			return res.render("session/index");
 		}
 	},
 	create:function(req,res){
 		if (req.method=="GET") {
 			return res.redirect('/login');
 		}
-		var username=req.param('username'),
+		var account=req.param('account'),
 			password=req.param('password');
 
-		if (!username ) {
+		if (!account ) {
 			//req.flash.message('login failed...','error');
 			req.flash('error','请输入账号');
-			return res.render('session/index',{
-				username:''
-			});
+			return res.render('session/index');
 		}
 		else if (!password) {
 			req.flash('error','请输入密码');
 			return res.render('session/index',{
-				username:username
+				account:account
 			});
 		}
 
-		console.log('session#create:'+username+','+password);
-
-		User.findOne({Name:username}).exec(function(err,user){
+		User.findOne({account:account}).exec(function(err,user){
 			if (!user || err) {
 				//req.flash.message('login failed...','error');
 				req.flash('error','找不到用户');
-				return res.render('session/index',{username:username});
+				return res.render('session/index',{account:account});
 			}
 
 			//console.log(user);
@@ -57,7 +53,7 @@ module.exports = {
 			else{
 				//req.flash.message('login failed,password error...','error');
 				req.flash('error','密码错误');
-				return res.render('session/index',{username:username});
+				return res.render('session/index',{account:account});
 			}
 		});
 	},

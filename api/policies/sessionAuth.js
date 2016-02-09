@@ -16,7 +16,7 @@ module.exports = function(req, res, next) {
   }*/
   //console.log(req.options);
   if (req.session.auth) {
-    res.locals.username=req.session.User.Name;
+    res.locals.currUser=req.session.User;
     Navigation.find().then(function(navs){
 			res.locals.navs=navs;
 			//console.log(app.locals.navs);

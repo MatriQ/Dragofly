@@ -28,7 +28,7 @@
         To customize any part of the built-in behavior, just edit `tasks/pipeline.js`.
         For example, here are a few things you could do:
 
-            + Change the order of your CSS files
+            + Change the order of your CSS files338
             + Import stylesheets from other directories
             + Use a different or additional preprocessor, like SASS, SCSS or Stylus
     -->
@@ -330,13 +330,13 @@
                                        <img src="/images/avatars/adam-jansen.jpg">
                                    </div>
                                    <section style="min-width:110px;">
-                                       <h2><span class="profile"><span><%= username %></span></span></h2>
+                                       <h2><span class="profile"><span><%= currUser.Name %></span></span></h2>
                                    </section>
                                </a>
                                <!--Login Area Dropdown-->
                                <ul class="pull-right dropdown-menu dropdown-arrow dropdown-login-area">
-                                   <li class="username"><a><%= username %></a></li>
-                                   <li class="email"><a>David.Stevenson@live.com</a></li>
+                                   <li class="username"><a><%= currUser.Name %></a></li>
+                                   <li class="email"><a><%= currUser.mail || '' %></a></li>
                                    <!--Avatar Area-->
                                    <li>
                                        <div class="avatar-area">
