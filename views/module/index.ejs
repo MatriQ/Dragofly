@@ -18,17 +18,18 @@
       </div>
       <div class="widget-body">
         <div class="table-toolbar">
-          <a  href="Navigation/new" class="btn btn-default">创建功能</a>
+          <a  href="Module/new" class="btn btn-default">创建功能</a>
         </div>
         <div role="grid" id="editabledatatable_wrapper" class="dataTables_wrapper form-inline no-footer">
           <table class="table table-striped table-hover table-bordered dataTable no-footer" id="editabledatatable" aria-describedby="editabledatatable_info">
             <thead>
             <tr role="row">
-              <th class="sorting_disabled" rowspan="1" colspan="1" style="min-width: 70px;">排序</th>
+              <th rowspan="1" colspan="1" style="min-width: 70px;">ID</th>
               <th rowspan="1" colspan="1" style="min-width: 80px;" aria-sort="ascending">名称</th>
               <th rowspan="1" colspan="1" style="min-width: 80px;">描述</th>
               <th rowspan="1" colspan="1" style="min-width: 98px;">图标</th>
               <th rowspan="1" colspan="1" style="min-width: 80px;">Tag</th>
+                <th class="sorting_disabled" rowspan="1" colspan="1" style="min-width: 70px;">排序</th>
               <th rowspan="1" colspan="1" aria-label="" style="min-width: 70px;"></th>
             </tr>
             </thead>
@@ -36,22 +37,25 @@
             <% navlist.forEach(function(nav){ %>
             <tr>
               <td>
-              <%= nav.sort %>
+              <%= nav.id %>
               </td>
               <td>
-              <%= nav.name %>
+                <%= nav.path %>
               </td>
               <td>
-              <%= nav.desc %>
+              <%= nav.desc||'' %>
               </td>
               <td>
-              <%= nav.icon %>
+              <%= nav.icon||'' %>
               </td>
               <td>
-              <%= nav.tag %>
+              <%= nav.tag||'' %>
               </td>
               <td>
-              <a class="btn btn-info btn-xs edit" <% if(nav.tag==='SYS_MANAGE'){%> disabled='disabled' <%} %> href="/navigation/edit/<%=nav.id%>" >修改</a>
+              <%= nav.sort||'' %>
+              </td>
+              <td>
+              <a class="btn btn-info btn-xs edit" <% if(nav.tag==='SYS_MANAGE'){%> disabled='disabled' <%} %> href="/Module/edit/<%=nav.id%>" >修改</a>
               <a class="btn btn-danger btn-xs delete" <% if(nav.tag==='SYS_MANAGE'){%> disabled='disabled' <%} %> href="" onclick="funDel('<%=nav.id%>');">删除</a>
               </td>
             </tr>

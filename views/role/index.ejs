@@ -40,7 +40,9 @@
               <%= role.Desc||'' %>
               </td>
               <td>
+                  <% if(role.Name==='admin'){%> <span class="gray">[全部]</span> <%}else{%>
                   <%= role.Funcs||'' %>
+                  <%}%>
               </td>
               <td>
               <a class="btn btn-info btn-xs edit" href="/role/edit/<%=role.id%>" >修改</a>

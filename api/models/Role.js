@@ -8,11 +8,15 @@
 module.exports = {
 
   attributes: {
-    Name:'STRING',
+    Name:{
+      type:'string',
+      unique: true,
+      required: true
+    },
     Desc:'STRING',
     users:{
-      collections:'user',
-      via:'users'
+      collection:'user',
+      via:'role'
   }
   }
 };

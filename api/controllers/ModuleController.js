@@ -7,7 +7,10 @@
 
 module.exports = {
 		index:function(req,res){
-			Module.find().sort({sort:-1}).then(function(navs){
+			Module.find().populate('parent').sort({sort:-1}).then(function(navs){
+				navs.forEach(function(n){
+					n.path=getPath(n.name,n);
+				});
 				res.locals.navlist=navs;
 				res.locals.title="功能管理";
 				return res.view();
@@ -58,3 +61,11 @@ module.exports = {
 			});
 		}
 };
+
+function getPath(path,n){
+	if(n.parent){
+		path=n.parent.name+'→'+path
+		return getPath(path,n.parent)
+	}
+	return path;
+}

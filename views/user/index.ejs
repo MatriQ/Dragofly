@@ -28,6 +28,7 @@
               <th rowspan="1" colspan="1" style="min-width: 80px;">用户名</th>
               <th rowspan="1" colspan="1" style="min-width: 80px;">帐号</th>
               <th rowspan="1" colspan="1" style="min-width: 98px;">邮箱</th>
+              <th rowspan="1" colspan="1" style="min-width: 80px;">角色</th>
               <th rowspan="1" colspan="1" style="min-width: 80px;">部门</th>
               <th rowspan="1" colspan="1" style="min-width: 70px;">上次登录</th>
               <th rowspan="1" colspan="1" style="min-width: 70px;"></th>
@@ -46,12 +47,12 @@
               <%= user.account %>
               </td>
               <td>
-                <% if(user.mail){ %>
-                  <%= user.mail %>
-                <%}%>
+                  <%= user.mail||'' %>
               </td>
               <td>
-                <%= user.depart ||{}.name || '' %>
+                  <span><%= (user.role||{}).Name %></span>
+              <td>
+                <%= (user.depart ||{}).name || '' %>
               </td>
               <td>
                   <%= user.lastlogintime || '' %>

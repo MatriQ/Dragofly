@@ -8,7 +8,10 @@
 module.exports = {
 
   attributes: {
-    name:'STRING',
+    name:{
+      type:'string',
+      required: true
+    },
     icon:'STRING',
     address:{
       type:'string',
@@ -20,6 +23,15 @@ module.exports = {
     {
       type:'integer',
       defaultsTo:0
+    },
+    parent:
+    {
+      model:'module'
+    },
+    children:
+    {
+      collection: 'module',
+      via: 'parent'
     }
   }
 };

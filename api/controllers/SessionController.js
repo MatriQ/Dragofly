@@ -36,7 +36,7 @@ module.exports = {
 			});
 		}
 
-		User.findOne({account:account}).exec(function(err,user){
+		User.findOne({account:account}).populate('role').exec(function(err,user){
 			if (!user || err) {
 				//req.flash.message('login failed...','error');
 				req.flash('error','找不到用户');

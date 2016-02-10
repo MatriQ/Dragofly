@@ -7,7 +7,7 @@
 
 module.exports = {
 	index:function(req,res){
-		User.find().then(function(users){
+		User.find().populate('role').then(function(users){
 			//console.log(users);
 			return res.view({users:users});
 		});

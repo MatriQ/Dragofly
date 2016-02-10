@@ -8,11 +8,26 @@
 module.exports = {
 
   attributes: {
-    account:'STRING',
-    Name:'STRING',
+    account:{
+      type:'string',
+      unique: true,
+      required: true
+    },
+    Name:{
+      type:'string',
+      unique: true,
+      required: true
+    },
     header:'string',
-    mail:'string',
-    pwd:'STRING',
+    mail:{
+      type:'string',
+      unique: true
+    },
+    pwd:
+    {
+      type:'string',
+      required: true
+    },
     lastlogintime:'time',
     isSuper:{
       type:'boolean',
