@@ -7,10 +7,10 @@
 
 module.exports = {
 		index:function(req,res){
-			Module.find().populate('parent').sort({sort:-1}).then(function(navs){
-				navs.forEach(function(n){
+			Module.find().sort({sort:1}).then(function(navs){
+				/*navs.forEach(function(n){
 					n.path=getPath(n.name,n);
-				});
+				});*/
 				res.locals.navlist=navs;
 				res.locals.title="功能管理";
 				return res.view();
@@ -35,11 +35,14 @@ module.exports = {
 			else if (req.method=='POST') {
 				newNav={
 					name:req.param('name'),
+					parent:req.param('parent'),
 			    icon:req.param('icon'),
 			    tag:req.param('tag'),
 			    desc:req.param('desc'),
+			    showInNav:req.param('showInNav'),
 			    sort:parseInt(req.param('sort'))
 				};
+				sails.log(newNav);
 				Module.create(newNav).then(function(ret){
 					return res.redirect('back');
 				}).catch(function(err){
@@ -52,13 +55,40 @@ module.exports = {
 		edit:function(req,res){
 			var id=req.param('id');
 			res.locals.title="修改功能"
-			Module.findOne({id:id}).then(function(nav){
-				res.locals.nav=nav;
-				return res.view();
-			}).catch(function(err){
-				req.flash('message',err);
-				return res.view();
-			});
+			if (req.method=='GET') {
+				Module.findOne({id:id}).then(function(nav){
+					res.locals.nav=nav;
+					return res.view();
+				}).catch(function(err){
+					req.flash('message',err);
+					return res.view();
+				});
+			}
+			else if(req.method=='POST'){
+				var newNav={
+					name:req.param('name'),
+					parent:req.param('parent'),
+			    icon:req.param('icon'),
+			    tag:req.param('tag'),
+			    desc:req.param('desc'),
+			    showInNav:req.param('showInNav'),
+			    sort:parseInt(req.param('sort'))
+				};
+				Module.findOne({id:id}).then(function(nav){
+					Module.update(id,newNav).then(function(nav){
+						res.locals.nav=nav;
+						return res.redirect('back');
+					}).catch(function(err){
+						req.flash('message',err);
+						console.log(err);
+						return res.view();
+					});
+				}).catch(function(err){
+					req.flash('message',err);
+					console.log(err);
+					return res.view();
+				});
+			}
 		}
 };
 

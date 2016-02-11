@@ -19,6 +19,10 @@ module.exports = {
     },
     tag:'STRING',
     desc:'STRING',
+    showInNav:{
+      type:'boolean',
+      defaultsTo:false
+    },
     sort:
     {
       type:'integer',

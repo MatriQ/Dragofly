@@ -2,14 +2,26 @@
   <div class="row">
     <div class="widget">
       <div class="widget-header bordered-bottom">
-        <span class="widget-caption">导航</span>
+        <span class="widget-caption">功能</span>
       </div>
       <div class="widget-body">
         <div>
           <input type="hidden" name="_csrf" value="<%= _csrf %>" />
           <div class="form-group">
-            <label for="name">导航名称</label>
-            <input name="name" type="text" class="form-control" id="name" placeholder="导航名称" value="<%= nav.name %>">
+            <label for="parent">父级功能</label>
+            <input name="parent" type="text" class="form-control" id="parent" placeholder="父级功能" value="<%= nav.parent||0 %>">
+          </div>
+          <div class="form-group">
+            <label for="name">功能名称</label>
+            <input name="name" type="text" class="form-control" id="name" placeholder="功能名称" value="<%= nav.name %>">
+          </div>
+          <div class="form-group">
+            <label for="showInNav">在导航中显示</label>
+            <br>
+            <label>
+                <input name="showInNav" class="checkbox-slider" type="checkbox" id="showInNav" <%= nav.showInNav===true?"checked":""%> >
+                <span class="text"></span>
+            </label>
           </div>
           <div class="form-group">
             <label for="desc">说明</label>
@@ -234,14 +246,14 @@
         </div>
           <div class="form-group">
             <label for="tag">TAG</label>
-            <input name="tag" type="text" class="form-control" id="tag" placeholder="TAG" value="<%= nav.tag %>">
+            <input name="tag" type="text" class="form-control" id="tag" placeholder="请输入TAG" value="<%= nav.tag %>">
           </div>
           <div class="form-group hidden">
             <label for="sort">排序</label>
-            <input name="sort" type="text" class="form-control" id="sort" value="0" value="<%= nav.sort %>">
+            <input name="sort" type="text" class="form-control" id="sort" value="<%= nav.sort %>">
           </div>
-          <button type="submit" class="btn btn-blue">提交</button>
-          <a href="/Module" class="btn">返回</a>
+          <button type="submit" onclick="setShowInNav();" class="btn btn-blue">提交</button>
+          <a href="/module" class="btn btn-default">返回</a>
         </div>
       </div>
     </div>
@@ -261,3 +273,8 @@
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div>
+<script type="text/javascript">
+  function setShowInNav(){
+      $("#showInNav").val($("#showInNav").prop("checked"));
+  }
+</script>

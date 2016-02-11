@@ -25,11 +25,12 @@
             <thead>
             <tr role="row">
               <th rowspan="1" colspan="1" style="min-width: 70px;">ID</th>
-              <th rowspan="1" colspan="1" style="min-width: 80px;" aria-sort="ascending">名称</th>
+              <th rowspan="1" colspan="1" style="min-width: 80px;">名称</th>
+              <th rowspan="1" colspan="1" style="min-width: 80px;">导航</th>
               <th rowspan="1" colspan="1" style="min-width: 80px;">描述</th>
               <th rowspan="1" colspan="1" style="min-width: 98px;">图标</th>
               <th rowspan="1" colspan="1" style="min-width: 80px;">Tag</th>
-                <th class="sorting_disabled" rowspan="1" colspan="1" style="min-width: 70px;">排序</th>
+              <th class="sorting_disabled" rowspan="1" colspan="1" style="min-width: 70px;">排序</th>
               <th rowspan="1" colspan="1" aria-label="" style="min-width: 70px;"></th>
             </tr>
             </thead>
@@ -40,7 +41,10 @@
               <%= nav.id %>
               </td>
               <td>
-                <%= nav.path %>
+                <%= nav.name %>
+              </td>
+              <td>
+                <%= nav.showInNav===true?'是':'否' %>
               </td>
               <td>
               <%= nav.desc||'' %>
@@ -52,7 +56,7 @@
               <%= nav.tag||'' %>
               </td>
               <td>
-              <%= nav.sort||'' %>
+              <%= nav.sort||0 %>
               </td>
               <td>
               <a class="btn btn-info btn-xs edit" <% if(nav.tag==='SYS_MANAGE'){%> disabled='disabled' <%} %> href="/Module/edit/<%=nav.id%>" >修改</a>
