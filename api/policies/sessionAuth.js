@@ -17,7 +17,7 @@ module.exports = function(req, res, next) {
   //console.log(req.options);
   if (req.session.auth) {
     res.locals.currUser=req.session.User;
-    Module.find({parent:null,showInNav:true}).populate('children').sort({sort:1}).then(function(navs){
+    Module.find({parent:0,showInNav:true}).populate('children').sort({sort:1}).then(function(navs){
       console.log(navs);
 			res.locals.navs=navs;
 			//console.log(app.locals.navs);

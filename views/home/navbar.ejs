@@ -3,7 +3,9 @@
     <li>
       <% if(nav.children && nav.children.length>>0>0 ){ %>
         <a href="<%= nav.address %>" class="menu-dropdown" >
-              <i class="menu-icon glyphicon glyphicon-cog"></i>
+              <% if(nav.icon){%>
+              <i class="menu-icon glyphicon glyphicon-<%=nav.icon%>"></i>
+              <%}%>
               <span class="menu-text"> <%= nav.name %></span>
               <i class="menu-expand"></i>
          </a>
@@ -18,7 +20,10 @@
          </ul>
        <% } else { %>
            <a href="<%= nav.address %>">
-                            <i class="menu-icon fa fa-calendar"></i>
+                           <% if(nav.icon){%>
+                           <i class="menu-icon fa fa-<%=nav.icon%>"></i>
+                           <%}%>
+                            
                             <span class="menu-text">
                                 <%= nav.name %>
                             </span>
