@@ -11,12 +11,16 @@ module.exports = {
 			//console.log(users);
 			return res.view({users:users});
 		});
+
 	},
 	new:function(req,res){
 		var user={account:'',pwd:'',isSuper:false};
 		if (req.method=='GET') {
 			res.locals.user=user;
-			return res.view();
+			Role.find().then(function(datas){
+				res.roles=datas;
+				return res.view();
+			});
 		}
 		else{
 			user={
@@ -24,6 +28,7 @@ module.exports = {
 				Name	:req.param('Name'),
 				mail	:req.param('mail'),
 				pwd		:req.param('pwd'),
+				role:req.param('role'),
 				isSuper	:false
 			};
 			User.create(user).then(function(ret){
@@ -44,21 +49,24 @@ module.exports = {
 			account:req.param('account'),
 			Name	:req.param('Name'),
 			mail	:req.param('mail'),
-			pwd:req.param('pwd')
+			//pwd:req.param('pwd'),
+			role:req.param('role')
 		};
 		if (req.method=='POST') {
+			console.log(reqUser);
 			User.update({id:id},reqUser).exec(function(err,user){
 				if (err || !user) {
-					req.flast('message',err);
+					req.flash('message',err);
 					console.log(err);
 				}
 				res.locals.user=user;
 				//console.log(user);
-				return res.redirect('back');
+				return res.redirect('/user');
 				/*User.findOne({id:id}).then(function(user){
 					res.locals.user=user;
 					console.log(user);
-					return res.redirect('back');*/
+					return res.redirect('back');
+				}*/
 				}
 			);
 		}
@@ -68,7 +76,10 @@ module.exports = {
 			}
 			User.findOne({id:id}).then(function(user){
 				res.locals.user=user;
-				return res.view();
+				Role.find().then(function(roles){
+					res.locals.roles=roles;
+					return res.view();
+				});
 			}).catch(function(err){
 				console.log('error:'+err);
 			});
@@ -84,7 +95,7 @@ module.exports = {
 			}
 			else if (user.isSuper===true) {
 				req.flash('message','不能删除超级管理员');
-				return res.redirect('back');
+				return res.redirect('/user');
 			}
 			else{
 

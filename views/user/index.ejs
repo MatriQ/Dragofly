@@ -50,7 +50,7 @@
                   <%= user.mail||'' %>
               </td>
               <td>
-                  <span><%= (user.role||{}).Name %></span>
+                  <span><%= (user.role||{}).Name||'' %></span>
               <td>
                 <%= (user.depart ||{}).name || '' %>
               </td>

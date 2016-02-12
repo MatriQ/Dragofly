@@ -1,0 +1,68 @@
+<div class="col-lg-12 col-sm-12 col-xs-12">
+  <div class="row">
+    <div class="widget">
+      <div class="widget-header bordered-bottom">
+        <span class="widget-caption">角色</span>
+      </div>
+      <div class="widget-body">
+        <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+        <div>
+          <div class="form-group">
+            <label for="account">角色名</label>
+              <input name="Name" type="text" class="form-control" id="Name" placeholder="请输入角色名" value="<%= role.Name||'' %>">
+          </div>
+          <div class="form-group">
+            <label for="Desc">说明</label>
+            <input name="Desc"  type="text" class="form-control" placeholder="请输入描述信息" value="<%= role.Desc||'' %>">
+          </div>
+          <div class="form-group">
+            <label for="icon">权限</label>
+            <div class="input-group">
+              <div class="input-group-btn">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">权限
+                  <span class="caret"></span>
+                </button>
+                <div class="dropdown-menu well select-glyphicons" >
+                  <ul class="select-glyphicons-list">
+                  <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-asterisk" /></a></li>
+                  <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-plus" /></a></li>
+                  <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-euro" /></a></li>
+                  <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-minus" /></a></li>
+                  <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-cloud" /></a></li>
+                  <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-envelope" /></a></li>
+                  <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-pencil" /></a></li>
+                  <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-glass" /></a></li>
+                  <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-music" /></a></li>
+                  <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-search" /></a></li>
+                  <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-heart" /></a></li>
+                  <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-star" /></a></li>
+                  <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-star-empty" /></a></li>
+
+                  </ul>
+                </div>
+              </div><!-- /btn-group -->
+                <input name="Func" type="text"  class="form-control hidden" >
+            </div><!-- /input-group -->
+          </div>
+          <button type="submit" class="btn btn-blue">提交</button>
+          <a href="/role" class="btn btn-default">返回</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="myLargeModalLabel">Large modal</h4>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>

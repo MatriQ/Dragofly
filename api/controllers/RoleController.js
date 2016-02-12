@@ -6,8 +6,13 @@
  */
 
 module.exports = {
+	getAll:function(req,res){
+		Role.find().then(function(roles){
+			res.json(roles);
+		});
+	},
 	index:function(req,res){
-		var roles=Role.find().then(function(roles){
+		Role.find().then(function(roles){
 			res.locals.roles=roles;
 			res.view();
 		});

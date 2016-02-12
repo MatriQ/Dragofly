@@ -13,10 +13,23 @@ module.exports = {
       unique: true,
       required: true
     },
-    Desc:'STRING',
+    Desc:{
+      type:'string',
+      defaultsTo:''
+    },
+    Enable:{
+      type:'boolean',
+      defaultsTo:true
+    },
     users:{
       collection:'user',
       via:'role'
-  }
+    },
+    toJSON:function(){
+      var obj=this.toObject();
+      delete obj.createdAt;
+      delete obj.updatedAt;
+      return obj;
+    }
   }
 };
