@@ -1,28 +1,28 @@
 <!--System-->
-  <% navs.forEach(function(nav){ %>
-    <li>
-      <% if(nav.children && nav.children.length>>0>0 ){ %>
-        <a href="<%= nav.address %>" class="menu-dropdown" >
-              <i class="menu-icon glyphicon<% if(nav.icon){%> glyphicon-<%=nav.icon%><%}%>"></i>              
-              <span class="menu-text"> <%= nav.name %></span>
-              <i class="menu-expand"></i>
-         </a>
-         <ul class="submenu">
-           <% nav.children.forEach(function(func){%>
-           <li>
-             <a href="<%= func.address %>">
-                <span class="menu-text"> <%= func.name %></span>
-              </a>
-            </li>
-           <%}) %>
-         </ul>
-       <% } else { %>
-           <a href="<%= nav.address %>">
-                           <i class="menu-icon fa<% if(nav.icon){%> fa-<%=nav.icon%><%}%>"></i>
-                            <span class="menu-text">
-                                <%= nav.name %>
-                            </span>
-                        </a>
-       <% } %>
-    </li>
-  <%}) %>
+<% navs.forEach(function(nav){ %>
+  <li>
+    <% if( (nav.children||{}).length>>0>0 ){ %>
+      <a href="<%= nav.address %>" class="menu-dropdown" >
+            <i class="menu-icon glyphicon<% if(nav.icon){%> glyphicon-<%=nav.icon%><%}%>"></i>
+            <span class="menu-text"> <%= nav.name %></span>
+            <i class="menu-expand"></i>
+       </a>
+       <ul class="submenu">
+         <% nav.children.forEach(function(func){%>
+         <li>
+           <a href="<%= func.address %>">
+              <span class="menu-text"> <%= func.name %></span>
+            </a>
+          </li>
+         <%}) %>
+       </ul>
+     <% } else { %>
+         <a href="<%= nav.address %>">
+           <i class="menu-icon fa<% if(nav.icon){%> fa-<%=nav.icon%><%}%>"></i>
+            <span class="menu-text">
+                <%= nav.name %>
+            </span>
+        </a>
+     <% } %>
+  </li>
+<%}) %>

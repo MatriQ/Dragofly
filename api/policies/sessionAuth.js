@@ -17,15 +17,16 @@ module.exports = function(req, res, next) {
   //console.log(req.options);
   if (req.session.auth) {
     res.locals.currUser=req.session.User;
-    Module.find({parent:0,showInNav:true}).populateAll().sort({sort:1}).then(function(navs){
+			ModuleService.getModuleTree(function(navs){//});
+    //Module.find({parent:0,showInNav:true}).populateAll().sort({sort:1}).then(function(navs){
       //console.log(navs);
 			res.locals.navs=navs;
 			//console.log(app.locals.navs);
 			return next();
-		}).catch(function(err){
+		});/*.catch(function(err){
 			//req.flash('message',err);
 			return next();
-		});
+		});*/
     //return next();
   }
   else{
