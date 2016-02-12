@@ -18,7 +18,7 @@ module.exports = {
 		if (req.method=='GET') {
 			res.locals.user=user;
 			Role.find().then(function(datas){
-				res.roles=datas;
+				res.locals.roles=datas;
 				return res.view();
 			});
 		}
