@@ -6,18 +6,27 @@
  */
 
 module.exports = {
+		getAllModule:function(req,res){
+			ModuleService.getModuleTree(function(navs){
+				return res.json(navs);
+			});
+		},
+		getChildModule:function(req,res){
+			var parentId=parseInt(req.param('id'));
+			Module.find({parent:parentId}).sort({sort:1}).then(function(navs){
+				return res.json(navs);
+			});
+		},
 		index:function(req,res){
 			Module.find().sort({sort:1}).then(function(navs){
-				/*navs.forEach(function(n){
-					n.path=getPath(n.name,n);
-				});*/
 				res.locals.navlist=navs;
 				res.locals.title="功能管理";
 				return res.view();
-			}).catch(function(err){
+			});
+			/*.catch(function(err){
 				req.flash('message',err);
 				return res.view();
-			});
+			});*/
 		},
 		new:function(req,res){
 			var newNav={

@@ -33,33 +33,8 @@
               <th rowspan="1" colspan="1" aria-label="" style="min-width: 70px;"></th>
             </tr>
             </thead>
-            <tbody>
-            <% navlist.forEach(function(nav){ %>
-            <tr>
-              <td>
-              <%= nav.id %>
-              </td>
-              <td>
-                <%= nav.name %>  <span class="shiny icon-only glyphicon glyphicon-<%= nav.icon||'' %>" />
-              </td>
-              <td>
-                <%= nav.showInNav===true?'是':'否' %>
-              </td>
-              <td>
-              <%= nav.desc||'' %>
-              </td>
-              <td>
-              <%= nav.tag||'' %>
-              </td>
-              <td>
-              <%= nav.sort||0 %>
-              </td>
-              <td>
-              <a class="btn btn-info btn-xs edit" <% if(nav.tag==='SYS_MANAGE'){%> disabled='disabled' <%} %> href="/Module/edit/<%=nav.id%>" >修改</a>
-              <a class="btn btn-danger btn-xs delete" <% if(nav.tag==='SYS_MANAGE'){%> disabled='disabled' <%} %> href="" onclick="funDel('<%=nav.id%>');">删除</a>
-              </td>
-            </tr>
-            <% }) %>
+            <tbody id='tbContent'>
+
             </tbody>
           </table>
           <div class="row DTTTFooter">
@@ -83,3 +58,56 @@
     </div>
   </div>
 </div>
+<script type="text/javascript">
+  function createRow(m,row,lv){
+    lv=lv ||0;
+    var str="<tr id='row"+m.id+"'>\
+      <td>"+m.id+"</td>\
+      <td>";
+    //str+="<span class='shiny icon-only glyphicon glyphicon-"+m.icon+"' />";
+    if(lv>0){
+      str+="|";
+    }
+    for(var i=0;i<lv;i++){
+      str+="-----";
+    }
+    str+=m.name;
+
+    str+="<span class='shiny icon-only glyphicon glyphicon-"+m.icon+"' />"+"</td>";
+
+    str+="<td>"+(m.showInNav?'是':'否')+"</td>\
+      <td>"+m.desc+"</td>\
+      <td>"+m.tag+"</td>\
+      <td>"+m.sort||0+"</td>";
+    str+="<td><a class='btn btn-info btn-xs edit' ";
+    if (m.tag==='SYS_MANAGE') {
+      str+="disabled='disabled'";
+    }
+    str+= " href='/Module/edit/"+m.id+"' >修改</a>";
+    str+="&nbsp;<a class='btn btn-danger btn-xs delete' ";
+    if (m.tag==='SYS_MANAGE') {
+      str+="disabled='disabled'";
+    }
+    str+= " href='#' onclick='funDel('"+m.id+"');'>删除</a>";
+    str+="</td></tr>";
+    if(row){
+      row.after(str);
+    }
+    else{
+      $("#tbContent").append(str);
+    }
+
+    $.get('/Module/getChildModule/'+m.id,function(modules){
+      modules.forEach(function(cm){
+        createRow(cm,$("#row"+m.id),lv+1);
+      });
+    });
+  }
+  $().ready(function(){
+    $.get('/Module/getChildModule/0',function(modules){
+      modules.forEach(function(m){
+        createRow(m);
+      });
+    });
+  });
+</script>
