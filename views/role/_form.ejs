@@ -16,34 +16,10 @@
             <input name="Desc"  type="text" class="form-control" placeholder="请输入描述信息" value="<%= role.Desc||'' %>">
           </div>
           <div class="form-group">
-            <label for="icon">权限</label>
-            <div class="input-group">
-              <div class="input-group-btn">
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
-                  aria-haspopup="true" aria-expanded="false">权限
-                  <span class="caret"></span>
-                </button>
-                <div class="dropdown-menu well select-glyphicons" >
-                  <ul class="select-glyphicons-list">
-                  <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-asterisk" /></a></li>
-                  <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-plus" /></a></li>
-                  <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-euro" /></a></li>
-                  <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-minus" /></a></li>
-                  <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-cloud" /></a></li>
-                  <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-envelope" /></a></li>
-                  <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-pencil" /></a></li>
-                  <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-glass" /></a></li>
-                  <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-music" /></a></li>
-                  <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-search" /></a></li>
-                  <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-heart" /></a></li>
-                  <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-star" /></a></li>
-                  <li><a href="#"><span class="shiny icon-only glyphicon glyphicon-star-empty" /></a></li>
+            <label for="func">权限</label>
+              <input class="form-control " id="txtModuleName" type="text" >
 
-                  </ul>
-                </div>
-              </div><!-- /btn-group -->
-                <input name="Func" type="text"  class="form-control hidden" >
-            </div><!-- /input-group -->
+              <input name="func" id="txtModuleN" type="hidden" >
           </div>
           <button type="submit" class="btn btn-blue">提交</button>
           <a href="/role" class="btn btn-default">返回</a>
@@ -66,3 +42,111 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div>
+
+<div id="divModule" style="display:none;">
+    <div class="row">
+        <div class="col-md-12">
+
+          <div role="grid" id="editabledatatable_wrapper" class="dataTables_wrapper form-inline no-footer">
+            <table class="table table-striped table-hover table-bordered dataTable no-footer" id="editabledatatable" aria-describedby="editabledatatable_info">
+              <thead>
+              <tr role="row">
+                <th rowspan="1" colspan="1" style="min-width: 4px;"></th>
+                <th rowspan="1" colspan="1" style="min-width: 120px;">名称</th>
+                <th rowspan="1" colspan="1" style="min-width: 80px;">描述</th>
+                <th rowspan="1" colspan="1" style="min-width: 80px;">Tag</th>
+              </tr>
+              </thead>
+              <tbody id='tbContent'>
+              </tbody>
+            </table>
+          </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+  var ms=[];
+  var names=[];
+  function createRow(m,row,lv){
+    lv=lv ||0;
+    var str="<tr id='row"+m.id+"'><td>"
+    str+='<div class="checkbox"><label><input onchange="chbChanged('+m.id+",'"+m.name+"',"+m.parent;
+    str+=')" id="chr'+m.id+'" type="checkbox" ><span class="text"></span></label></div>'
+    str+="</td><td>";
+    //str+="<span class='shiny icon-only glyphicon glyphicon-"+m.icon+"' />";
+    if(lv>0){
+      str+="|";
+    }
+    for(var i=0;i<lv;i++){
+      str+="-----";
+    }
+    str+=m.name;
+
+    str+="<span class='pull-right shiny icon-only glyphicon glyphicon-"+m.icon+"' />"+"</td>";
+
+    str+="<td>"+m.desc+"</td>";
+    str+="<td>"+m.tag+"</td>";
+    str+="</td></tr>";
+    if(row){
+      row.after(str);
+    }
+    else{
+      $("#tbContent").append(str);
+    }
+
+    $.get('/Module/getChildModule/'+m.id,function(modules){
+      modules.forEach(function(cm){
+        createRow(cm,$("#row"+m.id),lv+1);
+      });
+    });
+  }
+  $().ready(function(){
+    $.get('/Module/getChildModule/0',function(modules){
+      modules.forEach(function(m){
+        createRow(m);
+      });
+    });
+  });
+  $("#txtModuleName").on('focus', function () {
+        bootbox.dialog({
+            message: $("#divModule").html(),
+            title: "选择权限",
+            className: "modal-darkorange",
+            buttons: {
+                success: {
+                    label: "确 定",
+                    className: "btn-blue",
+                    callback: function () {
+                    }
+                },
+                "取 消": {
+                    className: "btn-danger",
+                    callback: function () {
+                    }
+                }
+            }
+        });
+    });
+    function chbChanged(id,name,p){
+      if($.inArray(id>>0,ms)===-1 && p>>0>0){
+        ms.push(id>>0);
+      }
+      if($.inArray(p>>0,ms)===-1 && p>>0>0){
+        ms.push(p>>0);
+      }
+      if($.inArray(name,names)===-1){
+        names.push(name);
+      }
+      $("#txtModule").val(ms);
+      $("#txtModuleName").val(names);
+
+      if(p){
+        var chb=$('#chr'+p);
+        if(chb){
+          chb.prop("checked",true);
+        }
+      }
+    }
+</script>
